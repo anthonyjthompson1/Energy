@@ -1,0 +1,2570 @@
+Sub Hide_Unwanted()
+    Sheets("Air-Side Outputs").Select
+    Sheets("Results Summary").Visible = True
+    Sheets("Results Summary").Select
+    Sheets("Pump Energy").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Water-Side").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Exhaust Air Summary").Visible = True
+    
+    Application.Iteration = True
+    Application.Calculation = xlAutomatic
+    Sheets("Curves & Constants").Select
+    Range("C25").Select
+    Selection.Copy
+    Range("A1").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Range("A1").Select
+    Application.CutCopyMode = False
+    Selection.ClearContents
+    Application.Calculation = xlManual
+    
+        Sheets("Water-Side").Unprotect Password:="Thompson"
+        Sheets("Pump Energy").Unprotect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Unprotect Password:="Thompson"
+        
+        Sheets("Water-Side").Select
+        
+        Range("Unwanted_001").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_002").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_003").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_004").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_005").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_006").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_007").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_008").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_009").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_010").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_011").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_012").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_013").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_014").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_015").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_016").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_017").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_018").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_019").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_020").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_021").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_022").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_023").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_024").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_025").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_026").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_027").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_028").Select
+    Selection.EntireColumn.Hidden = True
+        Range("Unwanted_029").Select
+    Selection.EntireColumn.Hidden = True
+'        Range("Unwanted_032").Select
+'    Selection.EntireColumn.Hidden = True
+    
+        Sheets("Pump Energy").Select
+        
+        Range("Unwanted_030").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Sheets("Exhaust Air Summary").Select
+        
+        Range("Unwanted_031").Select
+    Selection.EntireColumn.Hidden = True
+    
+    Sheets("Curves & Constants").Select
+    
+Dim curves_NA As Range
+
+    For Each curves_NA In Range("dq9:ib9").Cells
+        If curves_NA.Value = "N/A" Then
+        curves_NA.EntireColumn.Hidden = True
+        End If
+    Next curves_NA
+    For Each curves_NA In Range("dq9:ib9").Cells
+        If curves_NA.Value <> "N/A" Then
+        curves_NA.EntireColumn.Hidden = False
+        End If
+    Next curves_NA
+
+    Sheets("Pump Energy").Select
+        
+Dim pump_NA As Range
+
+    For Each pump_NA In Range("b12:kg12").Cells
+        If pump_NA.Value = "N/A" Then
+        pump_NA.EntireColumn.Hidden = True
+        End If
+    Next pump_NA
+    For Each pump_NA In Range("b12:kg12").Cells
+        If pump_NA.Value <> "N/A" Then
+        pump_NA.EntireColumn.Hidden = False
+        End If
+    Next pump_NA
+    
+    Sheets("Water-Side").Select
+        
+Dim water_NA As Range
+
+    For Each water_NA In Range("b7:ip7").Cells
+        If water_NA.Value = "N/A" Then
+        water_NA.EntireColumn.Hidden = True
+        End If
+    Next water_NA
+    For Each water_NA In Range("b7:ip7").Cells
+        If water_NA.Value <> "N/A" Then
+        water_NA.EntireColumn.Hidden = False
+        End If
+    Next water_NA
+    
+    Sheets("Results Summary").Select
+    
+Dim results_NA As Range
+
+    For Each results_NA In Range("a7:ET7").Cells
+        If results_NA.Value = "N/A" Then
+        results_NA.EntireColumn.Hidden = True
+        End If
+    Next results_NA
+    For Each results_NA In Range("a7:ET7").Cells
+        If results_NA.Value <> "N/A" Then
+        results_NA.EntireColumn.Hidden = False
+        End If
+    Next results_NA
+    
+        Sheets("Curves & Constants").Select
+        Range("C29").Select
+        
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+        
+        Sheets("Water-Side").Protect Password:="Thompson"
+        Sheets("Pump Energy").Protect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Protect Password:="Thompson"
+End Sub
+Sub Open_CoGen()
+        Sheets("Water-Side").Unprotect Password:="Thompson"
+        Sheets("Pump Energy").Unprotect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Unprotect Password:="Thompson"
+        
+    Sheets("Air-Side Outputs").Select
+    Sheets("Results Summary").Visible = True
+    Sheets("Results Summary").Select
+    Sheets("Pump Energy").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Water-Side").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Exhaust Air Summary").Visible = True
+        
+    If Range("CoGen_Button").Value = "Yes" Then
+    
+        Sheets("Water-Side").Select
+        
+        Range("CoGen_001").Select
+    Selection.EntireColumn.Hidden = True
+        Range("CoGen_002").Select
+    Selection.EntireColumn.Hidden = True
+        Range("CoGen_003").Select
+    Selection.EntireColumn.Hidden = True
+        Range("CoGen_004").Select
+    Selection.EntireColumn.Hidden = True
+        Range("CoGen_005").Select
+    Selection.EntireColumn.Hidden = True
+        Range("CoGen_006").Select
+    Selection.EntireColumn.Hidden = True
+        Range("CoGen_007").Select
+    Selection.EntireColumn.Hidden = True
+        Range("CoGen_008").Select
+    Selection.EntireColumn.Hidden = True
+        Range("CoGen_009").Select
+    Selection.EntireColumn.Hidden = True
+        Range("CoGen_010").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Sheets("Pump Energy").Select
+        
+        Range("CoGen_011").Select
+    Selection.EntireColumn.Hidden = True
+        Range("CoGen_012").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Sheets("Air-Side Outputs").Select
+        
+        Range("CoGen_013").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Sheets("Curves & Constants").Select
+        
+        Range("CoGen_014").Select
+    Selection.EntireColumn.Hidden = True
+        Range("CoGen_015").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Range("CoGen_Button").Select
+    ActiveCell.FormulaR1C1 = "No"
+    ActiveWindow.SmallScroll Down:=-100
+    
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    
+ Else
+        Sheets("Water-Side").Select
+        
+        Range("CoGen_001").Select
+    Selection.EntireColumn.Hidden = False
+        Range("CoGen_002").Select
+    Selection.EntireColumn.Hidden = False
+        Range("CoGen_003").Select
+    Selection.EntireColumn.Hidden = False
+        Range("CoGen_004").Select
+    Selection.EntireColumn.Hidden = False
+        Range("CoGen_005").Select
+    Selection.EntireColumn.Hidden = False
+        Range("CoGen_006").Select
+    Selection.EntireColumn.Hidden = False
+        Range("CoGen_007").Select
+    Selection.EntireColumn.Hidden = False
+        Range("CoGen_008").Select
+    Selection.EntireColumn.Hidden = False
+        Range("CoGen_009").Select
+    Selection.EntireColumn.Hidden = False
+        Range("CoGen_010").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Sheets("Pump Energy").Select
+        
+        Range("CoGen_011").Select
+    Selection.EntireColumn.Hidden = False
+        Range("CoGen_012").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Sheets("Air-Side Outputs").Select
+        
+        Range("CoGen_013").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Sheets("Curves & Constants").Select
+        
+        Range("CoGen_014").Select
+    Selection.EntireColumn.Hidden = False
+        Range("CoGen_015").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Range("CoGen_Button").Select
+    ActiveCell.FormulaR1C1 = "Yes"
+    ActiveWindow.SmallScroll Down:=-100
+    
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    
+        Sheets("Water-Side").Protect Password:="Thompson"
+        Sheets("Pump Energy").Protect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Protect Password:="Thompson"
+    
+End If
+End Sub
+Sub Open_Boiler()
+
+        Sheets("Water-Side").Unprotect Password:="Thompson"
+        Sheets("Pump Energy").Unprotect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Unprotect Password:="Thompson"
+
+    Sheets("Air-Side Outputs").Select
+    Sheets("Results Summary").Visible = True
+    Sheets("Results Summary").Select
+    Sheets("Pump Energy").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Water-Side").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Exhaust Air Summary").Visible = True
+
+    If Range("Boiler_Button").Value = "Yes" Then
+        
+        Sheets("Water-Side").Select
+        
+        Range("Boiler_001").Select
+    Selection.EntireColumn.Hidden = True
+       Range("Boiler_002").Select
+    Selection.EntireColumn.Hidden = True
+       Range("Boiler_003").Select
+    Selection.EntireColumn.Hidden = True
+       Range("Boiler_004").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Sheets("Pump Energy").Select
+    
+       Range("Boiler_005").Select
+    Selection.EntireColumn.Hidden = True
+       Range("Boiler_006").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Sheets("Curves & Constants").Select
+        
+       Range("Boiler_007").Select
+    Selection.EntireColumn.Hidden = True
+       Range("Boiler_008").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Range("Boiler_Button").Select
+    ActiveCell.FormulaR1C1 = "No"
+    ActiveWindow.SmallScroll Down:=-100
+    
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+
+Else
+        Sheets("Water-Side").Select
+        
+        Range("Boiler_001").Select
+    Selection.EntireColumn.Hidden = False
+       Range("Boiler_002").Select
+    Selection.EntireColumn.Hidden = False
+       Range("Boiler_003").Select
+    Selection.EntireColumn.Hidden = False
+       Range("Boiler_004").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Sheets("Pump Energy").Select
+    
+       Range("Boiler_005").Select
+    Selection.EntireColumn.Hidden = False
+       Range("Boiler_006").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Sheets("Curves & Constants").Select
+        
+       Range("Boiler_007").Select
+    Selection.EntireColumn.Hidden = False
+       Range("Boiler_008").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Range("Boiler_Button").Select
+    ActiveCell.FormulaR1C1 = "Yes"
+    ActiveWindow.SmallScroll Down:=-100
+    
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    
+        Sheets("Water-Side").Protect Password:="Thompson"
+        Sheets("Pump Energy").Protect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Protect Password:="Thompson"
+End If
+End Sub
+
+Sub Open_ASHP()
+        Sheets("Water-Side").Unprotect Password:="Thompson"
+        Sheets("Pump Energy").Unprotect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Unprotect Password:="Thompson"
+        
+    Sheets("Air-Side Outputs").Select
+    Sheets("Results Summary").Visible = True
+    Sheets("Results Summary").Select
+    Sheets("Pump Energy").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Water-Side").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Exhaust Air Summary").Visible = True
+    
+    Application.Calculation = xlManual
+
+    If Range("ASHP_Button").Value = "Yes" Then
+    
+        Sheets("Water-Side").Select
+        
+        Range("ASHP_001").Select
+    Selection.EntireColumn.Hidden = True
+       Range("ASHP_002").Select
+    Selection.EntireColumn.Hidden = True
+       Range("ASHP_003").Select
+    Selection.EntireColumn.Hidden = True
+       Range("ASHP_004").Select
+    Selection.EntireColumn.Hidden = True
+       Range("ASHP_005").Select
+    Selection.EntireColumn.Hidden = True
+       Range("ASHP_006").Select
+    Selection.EntireColumn.Hidden = True
+       Range("ASHP_007").Select
+    Selection.EntireColumn.Hidden = True
+       Range("ASHP_008").Select
+    Selection.EntireColumn.Hidden = True
+       Range("ASHP_009").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Sheets("Pump Energy").Select
+        
+       Range("ASHP_010").Select
+    Selection.EntireColumn.Hidden = True
+       Range("ASHP_011").Select
+    Selection.EntireColumn.Hidden = True
+       Range("ASHP_012").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Sheets("Curves & Constants").Select
+        
+       Range("ASHP_013").Select
+    Selection.EntireColumn.Hidden = True
+       Range("ASHP_014").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Range("ASHP_Button").Select
+    ActiveCell.FormulaR1C1 = "No"
+    ActiveWindow.SmallScroll Down:=-100
+    
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+
+Else
+        Sheets("Water-Side").Select
+        
+        Range("ASHP_001").Select
+    Selection.EntireColumn.Hidden = False
+       Range("ASHP_002").Select
+    Selection.EntireColumn.Hidden = False
+       Range("ASHP_003").Select
+    Selection.EntireColumn.Hidden = False
+       Range("ASHP_004").Select
+    Selection.EntireColumn.Hidden = False
+       Range("ASHP_005").Select
+    Selection.EntireColumn.Hidden = False
+       Range("ASHP_006").Select
+    Selection.EntireColumn.Hidden = False
+       Range("ASHP_007").Select
+    Selection.EntireColumn.Hidden = False
+       Range("ASHP_008").Select
+    Selection.EntireColumn.Hidden = False
+       Range("ASHP_009").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Sheets("Pump Energy").Select
+        
+       Range("ASHP_010").Select
+    Selection.EntireColumn.Hidden = False
+       Range("ASHP_011").Select
+    Selection.EntireColumn.Hidden = False
+       Range("ASHP_012").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Sheets("Curves & Constants").Select
+        
+       Range("ASHP_013").Select
+    Selection.EntireColumn.Hidden = False
+       Range("ASHP_014").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Range("ASHP_Button").Select
+    ActiveCell.FormulaR1C1 = "Yes"
+    ActiveWindow.SmallScroll Down:=-100
+    
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    
+        Sheets("Water-Side").Protect Password:="Thompson"
+        Sheets("Pump Energy").Protect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Protect Password:="Thompson"
+End If
+End Sub
+
+Sub Open_ACCH()
+        Sheets("Water-Side").Unprotect Password:="Thompson"
+        Sheets("Pump Energy").Unprotect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Unprotect Password:="Thompson"
+        
+    Sheets("Air-Side Outputs").Select
+    Sheets("Results Summary").Visible = True
+    Sheets("Results Summary").Select
+    Sheets("Pump Energy").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Water-Side").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Exhaust Air Summary").Visible = True
+    
+    Application.Calculation = xlManual
+
+    If Range("ACCH_Button").Value = "Yes" Then
+
+        Sheets("Water-Side").Select
+        
+        Range("ACCH_001").Select
+    Selection.EntireColumn.Hidden = True
+        Range("ACCH_002").Select
+    Selection.EntireColumn.Hidden = True
+        Range("ACCH_003").Select
+    Selection.EntireColumn.Hidden = True
+        Range("ACCH_004").Select
+    Selection.EntireColumn.Hidden = True
+
+        Sheets("Pump Energy").Select
+        
+        Range("ACCH_005").Select
+    Selection.EntireColumn.Hidden = True
+        Range("ACCH_006").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Sheets("Curves & Constants").Select
+        
+        Range("ACCH_007").Select
+    Selection.EntireColumn.Hidden = True
+        Range("ACCH_008").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Range("ACCH_Button").Select
+    ActiveCell.FormulaR1C1 = "No"
+    ActiveWindow.SmallScroll Down:=-100
+    
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+
+Else
+        Sheets("Water-Side").Select
+        
+        Range("ACCH_001").Select
+    Selection.EntireColumn.Hidden = False
+        Range("ACCH_002").Select
+    Selection.EntireColumn.Hidden = False
+        Range("ACCH_003").Select
+    Selection.EntireColumn.Hidden = False
+        Range("ACCH_004").Select
+    Selection.EntireColumn.Hidden = False
+
+        Sheets("Pump Energy").Select
+        
+        Range("ACCH_005").Select
+    Selection.EntireColumn.Hidden = False
+        Range("ACCH_006").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Sheets("Curves & Constants").Select
+        
+        Range("ACCH_007").Select
+    Selection.EntireColumn.Hidden = False
+        Range("ACCH_008").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Range("ACCH_Button").Select
+    ActiveCell.FormulaR1C1 = "Yes"
+    ActiveWindow.SmallScroll Down:=-100
+
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    
+        Sheets("Water-Side").Protect Password:="Thompson"
+        Sheets("Pump Energy").Protect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Protect Password:="Thompson"
+End If
+End Sub
+Sub Open_WCCH()
+        Sheets("Water-Side").Unprotect Password:="Thompson"
+        Sheets("Pump Energy").Unprotect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Unprotect Password:="Thompson"
+        
+    Sheets("Air-Side Outputs").Select
+    Sheets("Results Summary").Visible = True
+    Sheets("Results Summary").Select
+    Sheets("Pump Energy").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Water-Side").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Exhaust Air Summary").Visible = True
+    
+    Application.Calculation = xlManual
+
+    If Range("WCCH_Button").Value = "Yes" Then
+
+        Sheets("Water-Side").Select
+        
+        Range("WCCH_001").Select
+    Selection.EntireColumn.Hidden = True
+        Range("WCCH_002").Select
+    Selection.EntireColumn.Hidden = True
+        Range("WCCH_003").Select
+    Selection.EntireColumn.Hidden = True
+        Range("WCCH_004").Select
+    Selection.EntireColumn.Hidden = True
+        Range("WCCH_005").Select
+    Selection.EntireColumn.Hidden = True
+        Range("WCCH_012").Select
+    Selection.EntireColumn.Hidden = True
+
+        Sheets("Pump Energy").Select
+        
+        Range("WCCH_006").Select
+    Selection.EntireColumn.Hidden = True
+        Range("WCCH_007").Select
+    Selection.EntireColumn.Hidden = True
+        Range("WCCH_008").Select
+    Selection.EntireColumn.Hidden = True
+        Range("WCCH_009").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Sheets("Curves & Constants").Select
+        
+        Range("WCCH_010").Select
+    Selection.EntireColumn.Hidden = True
+        Range("WCCH_011").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Range("WCCH_Button").Select
+    ActiveCell.FormulaR1C1 = "No"
+    ActiveWindow.SmallScroll Down:=-100
+    
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+
+Else
+
+        Sheets("Water-Side").Select
+        
+        Range("WCCH_001").Select
+    Selection.EntireColumn.Hidden = False
+        Range("WCCH_002").Select
+    Selection.EntireColumn.Hidden = False
+        Range("WCCH_003").Select
+    Selection.EntireColumn.Hidden = False
+        Range("WCCH_004").Select
+    Selection.EntireColumn.Hidden = False
+        Range("WCCH_005").Select
+    Selection.EntireColumn.Hidden = False
+        Range("WCCH_012").Select
+    Selection.EntireColumn.Hidden = False
+
+        Sheets("Pump Energy").Select
+        
+        Range("WCCH_006").Select
+    Selection.EntireColumn.Hidden = False
+        Range("WCCH_007").Select
+    Selection.EntireColumn.Hidden = False
+        Range("WCCH_008").Select
+    Selection.EntireColumn.Hidden = False
+        Range("WCCH_009").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Sheets("Curves & Constants").Select
+        
+        Range("WCCH_010").Select
+    Selection.EntireColumn.Hidden = False
+        Range("WCCH_011").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Range("WCCH_Button").Select
+    ActiveCell.FormulaR1C1 = "Yes"
+    ActiveWindow.SmallScroll Down:=-100
+    
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    
+        Sheets("Water-Side").Protect Password:="Thompson"
+        Sheets("Pump Energy").Protect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Protect Password:="Thompson"
+End If
+End Sub
+
+Sub Open_GSHP()
+        Sheets("Water-Side").Unprotect Password:="Thompson"
+        Sheets("Pump Energy").Unprotect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Unprotect Password:="Thompson"
+        
+    Sheets("Air-Side Outputs").Select
+    Sheets("Results Summary").Visible = True
+    Sheets("Results Summary").Select
+    Sheets("Pump Energy").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Water-Side").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Exhaust Air Summary").Visible = True
+    
+    Application.Calculation = xlManual
+
+    If Range("GSHP_Button").Value = "Yes" Then
+    
+        Sheets("Water-Side").Select
+        
+        Range("GSHP_001").Select
+    Selection.EntireColumn.Hidden = True
+        Range("GSHP_002").Select
+    Selection.EntireColumn.Hidden = True
+        Range("GSHP_003").Select
+    Selection.EntireColumn.Hidden = True
+        Range("GSHP_004").Select
+    Selection.EntireColumn.Hidden = True
+        Range("GSHP_005").Select
+    Selection.EntireColumn.Hidden = True
+        Range("GSHP_006").Select
+    Selection.EntireColumn.Hidden = True
+        Range("GSHP_007").Select
+    Selection.EntireColumn.Hidden = True
+        Range("GSHP_008").Select
+    Selection.EntireColumn.Hidden = True
+        Range("GSHP_009").Select
+    Selection.EntireColumn.Hidden = True
+        Range("GSHP_010").Select
+    Selection.EntireColumn.Hidden = True
+        Range("GSHP_011").Select
+    Selection.EntireColumn.Hidden = True
+
+        Sheets("Pump Energy").Select
+        
+        Range("GSHP_012").Select
+    Selection.EntireColumn.Hidden = True
+        Range("GSHP_013").Select
+    Selection.EntireColumn.Hidden = True
+        Range("GSHP_014").Select
+    Selection.EntireColumn.Hidden = True
+        Range("GSHP_015").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Sheets("Curves & Constants").Select
+        
+        Range("GSHP_016").Select
+    Selection.EntireColumn.Hidden = True
+        Range("GSHP_017").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Range("GSHP_Button").Select
+    ActiveCell.FormulaR1C1 = "No"
+    ActiveWindow.SmallScroll Down:=-100
+    
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+
+Else
+
+        Sheets("Water-Side").Select
+        
+        Range("GSHP_001").Select
+    Selection.EntireColumn.Hidden = False
+        Range("GSHP_002").Select
+    Selection.EntireColumn.Hidden = False
+        Range("GSHP_003").Select
+    Selection.EntireColumn.Hidden = False
+        Range("GSHP_004").Select
+    Selection.EntireColumn.Hidden = False
+        Range("GSHP_005").Select
+    Selection.EntireColumn.Hidden = False
+        Range("GSHP_006").Select
+    Selection.EntireColumn.Hidden = False
+        Range("GSHP_007").Select
+    Selection.EntireColumn.Hidden = False
+        Range("GSHP_008").Select
+    Selection.EntireColumn.Hidden = False
+        Range("GSHP_009").Select
+    Selection.EntireColumn.Hidden = False
+        Range("GSHP_010").Select
+    Selection.EntireColumn.Hidden = False
+        Range("GSHP_011").Select
+    Selection.EntireColumn.Hidden = False
+
+        Sheets("Pump Energy").Select
+        
+        Range("GSHP_012").Select
+    Selection.EntireColumn.Hidden = False
+        Range("GSHP_013").Select
+    Selection.EntireColumn.Hidden = False
+        Range("GSHP_014").Select
+    Selection.EntireColumn.Hidden = False
+        Range("GSHP_015").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Sheets("Curves & Constants").Select
+        
+        Range("GSHP_016").Select
+    Selection.EntireColumn.Hidden = False
+        Range("GSHP_017").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Range("GSHP_Button").Select
+    ActiveCell.FormulaR1C1 = "Yes"
+    ActiveWindow.SmallScroll Down:=-100
+    
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    
+        Sheets("Water-Side").Protect Password:="Thompson"
+        Sheets("Pump Energy").Protect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Protect Password:="Thompson"
+    
+End If
+End Sub
+
+Sub Open_EA()
+        Sheets("Water-Side").Unprotect Password:="Thompson"
+        Sheets("Pump Energy").Unprotect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Unprotect Password:="Thompson"
+        
+    Sheets("Air-Side Outputs").Select
+    Sheets("Results Summary").Visible = True
+    Sheets("Results Summary").Select
+    Sheets("Pump Energy").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Water-Side").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Exhaust Air Summary").Visible = True
+    
+    Application.Calculation = xlManual
+
+    If Range("EA_Button").Value = "Yes" Then
+    
+        Sheets("Exhaust Air Summary").Select
+        
+        Range("EA_001").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Sheets("Water-Side").Select
+        
+        Range("EA_002").Select
+    Selection.EntireColumn.Hidden = True
+        Range("EA_003").Select
+    Selection.EntireColumn.Hidden = True
+        Range("EA_004").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Sheets("Air-Side Outputs").Select
+        
+        Range("EA_005").Select
+    Selection.EntireColumn.Hidden = True
+        Range("EA_006").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Sheets("Curves & Constants").Select
+        
+        Range("EA_007").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Range("EA_Button").Select
+    ActiveCell.FormulaR1C1 = "No"
+    ActiveWindow.SmallScroll Down:=-100
+    
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    
+Else
+
+        Sheets("Exhaust Air Summary").Select
+        
+        Range("EA_001").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Sheets("Water-Side").Select
+        
+        Range("EA_002").Select
+    Selection.EntireColumn.Hidden = False
+        Range("EA_003").Select
+    Selection.EntireColumn.Hidden = False
+        Range("EA_004").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Sheets("Air-Side Outputs").Select
+        
+        Range("EA_005").Select
+    Selection.EntireColumn.Hidden = False
+        Range("EA_006").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Sheets("Curves & Constants").Select
+        
+        Range("EA_007").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Range("EA_Button").Select
+    ActiveCell.FormulaR1C1 = "Yes"
+    ActiveWindow.SmallScroll Down:=-100
+    
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    
+        Sheets("Water-Side").Protect Password:="Thompson"
+        Sheets("Pump Energy").Protect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Protect Password:="Thompson"
+End If
+End Sub
+
+Sub Open_HRCH()
+        Sheets("Water-Side").Unprotect Password:="Thompson"
+        Sheets("Pump Energy").Unprotect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Unprotect Password:="Thompson"
+
+    Sheets("Air-Side Outputs").Select
+    Sheets("Results Summary").Visible = True
+    Sheets("Results Summary").Select
+    Sheets("Pump Energy").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Water-Side").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Exhaust Air Summary").Visible = True
+    
+    Application.Calculation = xlManual
+
+    If Range("HRCH_Button").Value = "Yes" Then
+    
+        Sheets("Water-Side").Select
+        
+        Range("HRCH_001").Select
+    Selection.EntireColumn.Hidden = True
+        Range("HRCH_002").Select
+    Selection.EntireColumn.Hidden = True
+        Range("HRCH_003").Select
+    Selection.EntireColumn.Hidden = True
+        Range("HRCH_004").Select
+    Selection.EntireColumn.Hidden = True
+        Range("HRCH_005").Select
+    Selection.EntireColumn.Hidden = True
+        Range("HRCH_006").Select
+    Selection.EntireColumn.Hidden = True
+        Range("HRCH_007").Select
+    Selection.EntireColumn.Hidden = True
+        Range("HRCH_012").Select
+    Selection.EntireColumn.Hidden = True
+
+        Sheets("Pump Energy").Select
+        
+        Range("HRCH_008").Select
+    Selection.EntireColumn.Hidden = True
+        Range("HRCH_009").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Sheets("Curves & Constants").Select
+        
+        Range("HRCH_010").Select
+    Selection.EntireColumn.Hidden = True
+        Range("HRCH_011").Select
+    Selection.EntireColumn.Hidden = True
+    
+        Range("HRCH_Button").Select
+    ActiveCell.FormulaR1C1 = "No"
+    ActiveWindow.SmallScroll Down:=-100
+    
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+
+Else
+
+        Sheets("Water-Side").Select
+        
+        Range("HRCH_001").Select
+    Selection.EntireColumn.Hidden = False
+        Range("HRCH_002").Select
+    Selection.EntireColumn.Hidden = False
+        Range("HRCH_003").Select
+    Selection.EntireColumn.Hidden = False
+        Range("HRCH_004").Select
+    Selection.EntireColumn.Hidden = False
+        Range("HRCH_005").Select
+    Selection.EntireColumn.Hidden = False
+        Range("HRCH_006").Select
+    Selection.EntireColumn.Hidden = False
+        Range("HRCH_007").Select
+    Selection.EntireColumn.Hidden = False
+        Range("HRCH_012").Select
+    Selection.EntireColumn.Hidden = False
+
+        Sheets("Pump Energy").Select
+        
+        Range("HRCH_008").Select
+    Selection.EntireColumn.Hidden = False
+        Range("HRCH_009").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Sheets("Curves & Constants").Select
+        
+        Range("HRCH_010").Select
+    Selection.EntireColumn.Hidden = False
+        Range("HRCH_011").Select
+    Selection.EntireColumn.Hidden = False
+    
+        Range("HRCH_Button").Select
+    ActiveCell.FormulaR1C1 = "Yes"
+    ActiveWindow.SmallScroll Down:=-100
+    
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    
+        Sheets("Water-Side").Protect Password:="Thompson"
+        Sheets("Pump Energy").Protect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Protect Password:="Thompson"
+End If
+End Sub
+Sub Fix_EA()
+    Sheets("Air-Side Outputs").Select
+    Sheets("Results Summary").Visible = True
+    Sheets("Results Summary").Select
+    Sheets("Pump Energy").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Water-Side").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Exhaust Air Summary").Visible = True
+    
+    Sheets("Exhaust Air Summary").Select
+    Cells.Select
+    ActiveSheet.Unprotect
+    Application.Iteration = True
+    Application.Calculation = xlAutomatic
+    
+    Cells.Select
+    Range("A:BW").Activate
+    Selection.Replace What:="'C:\Users\athompson\Downloads\PSYCH.XLA'!", _
+        Replacement:="", LookAt:=xlPart, SearchOrder:=xlByRows, MatchCase:= _
+        False, SearchFormat:=False, ReplaceFormat:=False
+    ActiveSheet.Protect DrawingObjects:=True, Contents:=True, Scenarios:=True
+    Calculate
+
+   Dim AI As Excel.AddIn
+   Set AI = Application.AddIns.Add("P:\NYC\__OFFICE_STAFF\Thompson, Anthony\Calcs\PSYCH.XLA")
+   AI.Installed = True
+   Application.AddIns("Add_in").Installed = True
+   
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+
+End Sub
+
+Sub Print_Results()
+
+Application.ScreenUpdating = False
+
+        Sheets("Water-Side").Unprotect Password:="Thompson"
+        Sheets("Pump Energy").Unprotect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Unprotect Password:="Thompson"
+
+    Sheets("Air-Side Outputs").Select
+    Sheets("Results Summary").Visible = True
+    Sheets("Results Summary").Select
+    Sheets("Pump Energy").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Water-Side").Visible = True
+    Sheets("Pump Energy").Select
+    Sheets("Exhaust Air Summary").Visible = True
+
+Sheets("Pump Energy").Select
+   
+    Range("B13:DQ13").Select
+    Selection.AutoFill Destination:=Range("B13:DQ8772")
+  
+    Range("DS13:EA13").Select
+    Selection.AutoFill Destination:=Range("DS13:EA8772"), Type:=xlFillDefault
+   
+    Range("EC13:EG13").Select
+    Selection.AutoFill Destination:=Range("EC13:EG8772")
+    
+    Range("EI13:FL13").Select
+    Selection.AutoFill Destination:=Range("EI13:FL8772")
+    
+    Range("FN13:GM13").Select
+    Selection.AutoFill Destination:=Range("FN13:GM8772")
+    
+    Range("GO13:HC13").Select
+    Selection.AutoFill Destination:=Range("GO13:HC8772")
+    
+    Range("HE13:HQ13").Select
+    Selection.AutoFill Destination:=Range("HE13:HQ8772")
+   
+    Range("HS13:IR13").Select
+    Selection.AutoFill Destination:=Range("HS13:IR8772")
+    
+    Range("IT13:JF13").Select
+    Selection.AutoFill Destination:=Range("IT13:JF8772")
+    
+    Sheets("Water-Side").Select
+   
+    Range("B8:F8").Select
+    Selection.AutoFill Destination:=Range("B8:F8767"), Type:=xlFillDefault
+    
+    Range("H8:K8").Select
+    Selection.AutoFill Destination:=Range("H8:K8767")
+    
+    Range("M8:O8").Select
+    Selection.AutoFill Destination:=Range("M8:O8767"), Type:=xlFillDefault
+    
+    Range("Q8:Z8").Select
+    Selection.AutoFill Destination:=Range("Q8:Z8767")
+   
+    Range("AF8:BH8").Select
+    Selection.AutoFill Destination:=Range("AF8:BH8767"), Type:=xlFillDefault
+   
+    Range("BJ8:CA8").Select
+    Selection.AutoFill Destination:=Range("BJ8:CA8767"), Type:=xlFillDefault
+   
+  
+    Range("CC8:DH8").Select
+    Selection.AutoFill Destination:=Range("CC8:DH8767")
+
+    Range("DJ8:DQ8").Select
+    Selection.AutoFill Destination:=Range("DJ8:DQ8767")
+    
+    Range("DS8:EG8").Select
+    Selection.AutoFill Destination:=Range("DS8:EG8767")
+   
+    Range("EI8:EU8").Select
+    Selection.AutoFill Destination:=Range("EI8:EU8767")
+    
+    Range("EW8:FK8").Select
+    Selection.AutoFill Destination:=Range("EW8:FK8767")
+    
+    Range("FM8:FZ8").Select
+    Selection.AutoFill Destination:=Range("FM8:FZ8767")
+   
+    Range("GB8:GN8").Select
+    Selection.AutoFill Destination:=Range("GB8:GN8767")
+   
+    Range("GP8:HB8").Select
+    Selection.AutoFill Destination:=Range("GP8:HB8736")
+    
+    Range("HD8:HR8").Select
+    Selection.AutoFill Destination:=Range("HD8:HR8736")
+    
+    Range("HT8:HV8").Select
+    Selection.AutoFill Destination:=Range("HT8:HV8767")
+   
+    Range("IF8:IP8").Select
+    Selection.AutoFill Destination:=Range("IF8:IP8767"), Type:=xlFillDefault
+    
+    Sheets("Exhaust Air Summary").Select
+   
+    Range("B8:I8").Select
+    Selection.AutoFill Destination:=Range("B8:I8767"), Type:=xlFillDefault
+    
+    Range("K8:R8").Select
+    Selection.AutoFill Destination:=Range("K8:R8767"), Type:=xlFillDefault
+    
+    Range("T8:AB8").Select
+    Selection.AutoFill Destination:=Range("T8:AB8767"), Type:=xlFillDefault
+ 
+    Range("AE8:AK8").Select
+    Selection.AutoFill Destination:=Range("AE8:AK8767"), Type:=xlFillDefault
+    
+    Range("AM8:AS8").Select
+    Selection.AutoFill Destination:=Range("AM8:AS8767"), Type:=xlFillDefault
+   
+    Range("AU8:BA8").Select
+    Selection.AutoFill Destination:=Range("AU8:BA8767"), Type:=xlFillDefault
+    
+    Range("BC8:BE8").Select
+    Selection.AutoFill Destination:=Range("BC8:BE8767"), Type:=xlFillDefault
+   
+    Range("BG8:BH8").Select
+    Selection.AutoFill Destination:=Range("BG8:BH8767"), Type:=xlFillDefault
+    
+    
+    
+    Application.Iteration = True
+    Application.Calculation = xlAutomatic
+    Sheets("Curves & Constants").Select
+    Range("C25").Select
+    Selection.Copy
+    Range("A1").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Range("A1").Select
+    Application.CutCopyMode = False
+    Selection.ClearContents
+    Application.Calculation = xlManual
+    
+Dim curves_NA As Range
+
+    For Each curves_NA In Range("dq9:ib9").Cells
+        If curves_NA.Value = "N/A" Then
+        curves_NA.EntireColumn.Hidden = True
+        End If
+    Next curves_NA
+    For Each curves_NA In Range("dq9:ib9").Cells
+        If curves_NA.Value <> "N/A" Then
+        curves_NA.EntireColumn.Hidden = False
+        End If
+    Next curves_NA
+
+    Sheets("Pump Energy").Select
+        
+Dim pump_NA As Range
+
+    For Each pump_NA In Range("b12:kg12").Cells
+        If pump_NA.Value = "N/A" Then
+        pump_NA.EntireColumn.Hidden = True
+        End If
+    Next pump_NA
+    For Each pump_NA In Range("b12:kg12").Cells
+        If pump_NA.Value <> "N/A" Then
+        pump_NA.EntireColumn.Hidden = False
+        End If
+    Next pump_NA
+    
+    Sheets("Water-Side").Select
+        
+Dim water_NA As Range
+
+    For Each water_NA In Range("b7:ip7").Cells
+        If water_NA.Value = "N/A" Then
+        water_NA.EntireColumn.Hidden = True
+        End If
+    Next water_NA
+    For Each water_NA In Range("b7:ip7").Cells
+        If water_NA.Value <> "N/A" Then
+        water_NA.EntireColumn.Hidden = False
+        End If
+    Next water_NA
+    
+    Sheets("Results Summary").Select
+    
+Dim results_NA As Range
+
+    For Each results_NA In Range("a7:ET7").Cells
+        If results_NA.Value = "N/A" Then
+        results_NA.EntireColumn.Hidden = True
+        End If
+    Next results_NA
+    For Each results_NA In Range("a7:ET7").Cells
+        If results_NA.Value <> "N/A" Then
+        results_NA.EntireColumn.Hidden = False
+        End If
+    Next results_NA
+        
+    Sheets("Curves & Constants").Select
+Sheets.Add.Name = Range("Results_Sheet_Name").Value
+
+    ActiveWindow.Zoom = 70
+    Sheets(Range("Results_Sheet_Name").Value).Select
+    With ActiveWorkbook.Sheets(Range("Results_Sheet_Name").Value).Tab
+        .ThemeColor = xlThemeColorAccent6
+        .TintAndShade = 0
+    End With
+    'ActiveWorkbook.Save
+
+    Sheets("Curves & Constants").Select
+    Application.Goto Reference:="CurvesConstants_Range"
+    Selection.Copy
+    Sheets(Range("Results_Sheet_Name").Value).Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Curves & Constants").Select
+    Application.Goto Reference:="CurvesConstants_Format"
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Results_Sheet_Name").Value).Select
+    Range("A1").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Application.CutCopyMode = False
+    
+    Rows("1:1").Select
+    Range("UG1").Activate
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    
+    Sheets("Air-Side Outputs").Select
+    Application.Goto Reference:="AirSideOutputs_Range"
+    Selection.Copy
+    Sheets(Range("Results_Sheet_Name").Value).Select
+
+    Range("GU1").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    'ActiveWorkbook.Save
+    Sheets("Air-Side Outputs").Select
+    Application.Goto Reference:="AirSideOutputs_Format"
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Results_Sheet_Name").Value).Select
+    Range("GU1").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Application.CutCopyMode = False
+
+    Sheets("Water-Side").Select
+    Application.Goto Reference:="WaterSide_Range"
+    Selection.Copy
+
+    Sheets(Range("Results_Sheet_Name").Value).Select
+    Range("Tl1").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Water-Side").Select
+
+    Application.Goto Reference:="WaterSide_Format"
+    Application.CutCopyMode = False
+    Selection.Copy
+
+    Sheets(Range("Results_Sheet_Name").Value).Select
+    Range("Tl1").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Application.CutCopyMode = False
+    
+    Application.Goto Reference:="ResultsSummary_Range"
+    Selection.Copy
+
+    Sheets(Range("Results_Sheet_Name").Value).Select
+    Range("ADF1").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+
+    Application.Goto Reference:="ResultsSummary_Format"
+    Application.CutCopyMode = False
+    Selection.Copy
+
+    Sheets(Range("Results_Sheet_Name").Value).Select
+    Range("ADF1").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Application.CutCopyMode = False
+    
+    'Sheets("Results Summary").Select
+    'ActiveSheet.Shapes.Range(Array("Chart 2", "Chart 1")).Select
+    'Selection.Copy
+    'Sheets(Range("Results_Sheet_Name").Value).Select
+    'Range("add46").Select
+    'ActiveSheet.Pictures.Paste.Select
+    
+    Rows("1:1").Select
+    Range("UG1").Activate
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    Rows("1:1").Select
+    Range("UG1").Activate
+    Selection.Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    
+    Sheets("Pump Energy").Select
+    Application.Goto Reference:="PumpEnergy_Range"
+    Selection.Copy
+
+    Sheets(Range("Results_Sheet_Name").Value).Select
+    Range("HR1").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Pump Energy").Select
+    Application.Goto Reference:="PumpEnergy_Format"
+    Application.CutCopyMode = False
+    Selection.Copy
+
+    Sheets(Range("Results_Sheet_Name").Value).Select
+    Range("HR1").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Application.CutCopyMode = False
+    Rows("13:13").Select
+
+    Rows("13:13").Select
+    ActiveWindow.FreezePanes = True
+    
+    Rows("13:159").Select
+    Selection.RowHeight = 15
+    Rows("13:68").Select
+    Selection.RowHeight = 19.5
+    
+Dim lastColumn
+lastColumn = 1000
+    For iCntr = lastColumn To 1 Step -1
+        If Columns(iCntr).Hidden = True Then Columns(iCntr).EntireColumn.Delete
+    Next
+    
+    Range("A13").Select
+    
+    
+    
+    
+    
+    
+    
+    
+    Sheets("Pump Energy").Select
+   
+    Range("B14:DQ8772").Select
+    Selection.ClearContents
+    
+    Range("DS14:EA8772").Select
+    Selection.ClearContents
+    
+    Range("EC14:EG8772").Select
+    Selection.ClearContents
+    
+    Range("EI14:FL8772").Select
+    Selection.ClearContents
+   
+    Range("FN14:GM8772").Select
+    Selection.ClearContents
+    
+    Range("GO14:HC8772").Select
+    Selection.ClearContents
+    
+    Range("HE14:HQ8772").Select
+    Selection.ClearContents
+   
+    Range("HS14:IR8772").Select
+    Selection.ClearContents
+   
+    Range("IT14:JF8772").Select
+    
+    Selection.ClearContents
+    Sheets("Water-Side").Select
+   
+    Range("B9:F8767").Select
+    Selection.ClearContents
+    
+    Range("H9:K8767").Select
+    Selection.ClearContents
+   
+    Range("M9:O8767").Select
+    Selection.ClearContents
+   
+    Range("Q9:Z8767").Select
+    Selection.ClearContents
+    
+    Range("AF9:BH8767").Select
+    Selection.ClearContents
+    
+    Range("BJ9:CA8767").Select
+    Selection.ClearContents
+    
+    Range("CC9:DH8767").Select
+    Selection.ClearContents
+    
+    Range("DJ9:DQ8767").Select
+    Selection.ClearContents
+    
+    Range("DS9:EG8767").Select
+    Selection.ClearContents
+   
+    Range("EI9:EU8767").Select
+    Selection.ClearContents
+   
+    Range("EW9:FK8767").Select
+    Selection.ClearContents
+   
+    Range("FM9:FZ8767").Select
+    Selection.ClearContents
+   
+    Range("GB9:GN8767").Select
+    Selection.ClearContents
+    
+    Range("GP9:HB8736").Select
+    Selection.ClearContents
+   
+    Range("HD9:HR8736").Select
+    Selection.ClearContents
+    
+    Range("HT9:HV8767").Select
+    Selection.ClearContents
+    
+    Range("IF9:IP8767").Select
+    Selection.ClearContents
+    
+    Sheets("Exhaust Air Summary").Select
+    
+    Range("B9:BH8767").Select
+    Selection.ClearContents
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    Sheets("Curves & Constants").Select
+    Range("A1").Select
+    Sheets("Air-Side Outputs").Select
+    Range("A8").Select
+    Sheets("Pump Energy").Select
+    Range("A13").Select
+    Sheets("Water-Side").Select
+    Range("A8").Select
+    Sheets("Results Summary").Select
+    Range("A8").Select
+    
+    Sheets("Results Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Range("CP49").Select
+    ActiveCell.FormulaR1C1 = ""
+    Sheets("Exhaust Air Summary").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Water-Side").Select
+    ActiveWindow.SelectedSheets.Visible = False
+    Sheets("Pump Energy").Select
+    ActiveWindow.SelectedSheets.Visible = False
+
+    
+    Sheets("Curves & Constants").Select
+    
+    Sheets(Range("Results_Sheet_Name").Value).Select
+    'Range("ADA12").Select
+    Cells.Find(What:="Plant Heating Elec", After:=ActiveCell, LookIn:= _
+        xlFormulas, LookAt:=xlPart, SearchOrder:=xlByRows, SearchDirection:= _
+        xlNext, MatchCase:=False, SearchFormat:=False).Activate
+    Cells.FindNext(After:=ActiveCell).Activate
+    ActiveWindow.SmallScroll ToRight:=14
+    
+        Sheets("Water-Side").Protect Password:="Thompson"
+        Sheets("Pump Energy").Protect Password:="Thompson"
+        Sheets("Exhaust Air Summary").Protect Password:="Thompson"
+        ActiveWorkbook.Save
+    Application.ScreenUpdating = True
+End Sub
+
+Sub Macro2()
+
+'Sheets.Add.Name = "Temp"
+Sheets.Add.Name = Range("Workbook_Name").Value
+
+    ActiveWindow.Zoom = 70
+    Sheets(Range("Workbook_Name").Value).Select
+    With ActiveWorkbook.Sheets(Range("Workbook_Name").Value).Tab
+        .ThemeColor = xlThemeColorAccent6
+        .TintAndShade = 0
+    End With
+    
+    
+    Sheets("Curves & Constants").Select
+    Range("F2:I19").Select
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("F2").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+    Sheets("Curves & Constants").Select
+    Range("B1").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("B1").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+    Sheets("Curves & Constants").Select
+    Range("c25").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("c25").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+
+    Sheets("Curves & Constants").Select
+    Range("c72:c79").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("c72:c79").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+    Sheets("Curves & Constants").Select
+    Range("F23:G35").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("F23").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+    Sheets("Curves & Constants").Select
+    Range("I24:K34").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("I23").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Curves & Constants").Select
+    Range("N3:O11").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("N2:O11").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("N2").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Curves & Constants").Select
+    
+    Range("S2:V35").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("S2").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Curves & Constants").Select
+    Range("Y2:AB17").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("Y2").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+    Sheets("Curves & Constants").Select
+    Range("AC23:AE31").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("AC23").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    
+    Sheets("Curves & Constants").Select
+    Range("AH2:AM32").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("AH2").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+        
+        
+        
+    Sheets("Curves & Constants").Select
+    Range("AI3:AI14").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("AI3").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+    Sheets("Curves & Constants").Select
+    Range("AK6:AK7").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("AK6").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Curves & Constants").Select
+    Range("AH24:AM31").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Range("AH24:AM32").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("AH24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+        
+    
+    Sheets("Curves & Constants").Select
+    Range("AP2:AU32").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("AP2").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+
+    Sheets("Curves & Constants").Select
+   
+    Range("AX2:BA18").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("AX2").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Curves & Constants").Select
+    Range("AY24:AY34").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("AY24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Curves & Constants").Select
+    Range("BA24:BA34").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("BA24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Curves & Constants").Select
+    Range("BD24:BD27").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("BD24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Curves & Constants").Select
+    Range("BF24:BF31").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("BF24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Curves & Constants").Select
+   
+    Range("BI2:BL14").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("BI2").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Curves & Constants").Select
+    Range("BJ23:BJ35").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("BJ23").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Curves & Constants").Select
+    Range("BM23:BM31").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("BM23").Select
+    Application.CutCopyMode = False
+    Sheets("Curves & Constants").Select
+    Range("BM23:BM31").Select
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Curves & Constants").Select
+    Range("BQ27:BS34").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("BQ27").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Curves & Constants").Select
+    Range("CR21:CS28").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("CR21").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Curves & Constants").Select
+    Range("DC2:DF12").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    ActiveWindow.SmallScroll ToRight:=18
+    Range("DC2").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Curves & Constants").Select
+    Range("DG23:DJ31").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("DG23").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Curves & Constants").Select
+    Range("DN8").Select
+    Range("DN8:HF15").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    ActiveWindow.SmallScroll ToRight:=9
+    Range("DN8").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+
+    Sheets("Air-Side Outputs").Select
+    Range("B6").Select
+    Range("B6:V8767").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("HM6").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+
+    Sheets("Air-Side Outputs").Select
+    Range("z2").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets(Range("Workbook_Name").Value).Select
+    Range("Ik2").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+
+Workbooks.Open Filename:="G:\Shared\Sustainability\06_Energy Modeling\Post-Processing Calcs\Water-Side\Store Prj Info\Store Prj Info.xlsx"
+
+Dim wb As Workbook
+Set wb = ThisWorkbook
+
+    Windows("Store Prj Info.xlsx").Activate
+Sheets.Add.Name = "Temp Info"
+
+
+    wb.Activate
+    Cells.Select
+    Range("Q40").Activate
+    Selection.Copy
+    Windows("Store Prj Info.xlsx").Activate
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    wb.Activate
+    'Sheets(Range("Workbook_Name").Value).Select
+    Application.CutCopyMode = False
+    Windows("Store Prj Info.xlsx").Activate
+    Sheets("Temp Info").Select
+    Sheets("Temp Info").Name = Range("b1").Value
+
+    Windows("Store Prj Info.xlsx").Activate
+    ActiveWorkbook.Save
+    ActiveWindow.Close
+    
+    wb.Activate
+    Sheets(Range("Workbook_Name").Value).Select
+    ActiveWindow.SelectedSheets.Delete
+    
+    Sheets("Curves & Constants").Select
+    Range("A8").Select
+End Sub
+
+Sub Open_Info_WB()
+
+Workbooks.Open Filename:="G:\Shared\Sustainability\06_Energy Modeling\Post-Processing Calcs\Water-Side\Store Prj Info\Store Prj Info.xlsx"
+
+End Sub
+
+Sub Macro9()
+Dim wb As Workbook
+Set wb = ThisWorkbook
+
+Sheets.Add.Name = "Temp Inputs"
+
+    Windows("Store Prj Info.xlsx").Activate
+    Selection.Copy
+    wb.Activate
+    Range("A1").Select
+    ActiveSheet.Paste
+    Windows("Store Prj Info.xlsx").Activate
+    ActiveWindow.Close
+
+
+
+    Range("G3:G19").Select
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("G3").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+    Sheets("Temp Inputs").Select
+    Range("I8:I19").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("I8").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+    Sheets("Temp Inputs").Select
+    Range("c25").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("c25").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+
+    Sheets("Temp Inputs").Select
+    Range("c72:c79").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("c72:c79").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+    Sheets("Temp Inputs").Select
+    Range("F24:G35").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("F24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Curves & Constants").Select
+    Range("I24").Select
+    Sheets("Temp Inputs").Select
+    Range("J23:K29").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("J24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("J31:K33").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("J32").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("O3:O11").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("O3").Select
+    Sheets("Temp Inputs").Select
+    Range("O4:O8").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("O4").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("O10:O11").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("O10").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    
+    Sheets("Temp Inputs").Select
+    Range("T3:T20").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("T3").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("V3").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("V3").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("V6:V20").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("V6").Select
+    Sheets("Temp Inputs").Select
+    Range("V6:V18").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("T24:T35").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("T24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("V24:V27").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("V24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("V29:V34").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("V29").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("Z3:Z16").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("Z3").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("AB6:AB7").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AB6").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    
+    Sheets("Temp Inputs").Select
+    Range("AC24:AC27").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AC24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("AE24:AE25").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AE24").Select
+    Application.CutCopyMode = False
+    Sheets("Temp Inputs").Select
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("AE27:AE31").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AE27").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    
+    Sheets("Temp Inputs").Select
+   
+    'Sheets("Temp Inputs").Select
+    'Range("AQ3:AQ12").Select
+    'Application.CutCopyMode = False
+    'Selection.Copy
+    'Sheets("Curves & Constants").Select
+    'Range("AI3").Select
+    'Sheets("Temp Inputs").Select
+         
+        
+    Range("AI3:AI14").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AI3").Select
+    Application.CutCopyMode = False
+    Sheets("Temp Inputs").Select
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("AK6:AK7").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AK6").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("AI24:AI32").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AI24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("AK24:AK27").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AK24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("AM24:AM25").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AM24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("AM27:AM31").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AM27").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("AQ3").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AQ3").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Range("AQ5").Select
+    Sheets("Temp Inputs").Select
+    Range("AQ5:AQ7").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("AQ9:AQ12").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AQ9").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("AS6:AS7").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AS6").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("AQ24:AQ32").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AQ24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("AS24:AS27").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AS24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("AU24:AU25").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AU24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("AU27:AU31").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AU27").Select
+    Application.CutCopyMode = False
+    Sheets("Temp Inputs").Select
+    Selection.Copy
+    Range("AE39").Select
+    Sheets("Curves & Constants").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    
+    Sheets("Temp Inputs").Select
+    
+    Sheets("Temp Inputs").Select
+    Range("AY3:AY9").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AY3").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("AY10").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AY10").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("AY12:AY18").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AY12").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Range("AX54").Select
+    Sheets("Temp Inputs").Select
+    Range("AY24:AY34").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("AY24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("BA24:BA34").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("BA24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("BD24:BD27").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("BD24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("BF24:BF31").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("BF24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("BJ3:BJ14").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("BJ3").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("BJ24:BJ35").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("BJ24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("BM24:BM25").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("BM24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("BM27:BM31").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("BM27").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    
+    Sheets("Temp Inputs").Select
+   
+    Range("BQ30:BS30").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("BQ29").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+   
+    Sheets("Temp Inputs").Select
+   
+    Range("CS21:CS22").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("CS21").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("CS24").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("CS24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("CS27:CS28").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("CS27").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    
+    Sheets("Temp Inputs").Select
+    Range("DD3:DD6").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("DD3").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("DD8:DD12").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("DD8").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("DF5:DF6").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("DF5").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+   
+    Range("DH24:DH27").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("DH24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("DJ24:DJ25").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("DJ24").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("DJ27:DJ31").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("DJ27").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("DO10").Select
+    
+    Range("DO10:HF10").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Curves & Constants").Select
+    Range("DO10").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Range("HM8").Select
+   
+    Range("HM8:HW8767").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Air-Side Outputs").Select
+    Range("B8").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+    Sheets("Temp Inputs").Select
+    Range("HY8:IG8767").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Air-Side Outputs").Select
+    Range("N8").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Application.CutCopyMode = False
+    
+    Sheets("Temp Inputs").Select
+    Range("ik2").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Air-Side Outputs").Select
+    Range("z2").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Sheets("Temp Inputs").Select
+    Application.CutCopyMode = False
+    ActiveWindow.SelectedSheets.Delete
+    
+    Sheets("Air-Side Outputs").Select
+    Range("A1").Select
+End Sub
